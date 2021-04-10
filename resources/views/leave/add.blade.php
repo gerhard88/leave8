@@ -5,6 +5,7 @@
 @section('content')
     <!-- Create Leave Form... -->
 
+<<<<<<< master
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 ">
             <div class="panel panel-default">
@@ -15,6 +16,31 @@
                     <!-- if there are creation errors, they will show here -->
                     {!! HTML::ul($errors->all()) !!}
 
+=======
+<div class="row my-6 mx-6">
+    <div class="col-md-8 grid-margin  stretch-card">
+        <div class="card">
+            <div class="container-fluid mt-2 w-100">
+                <h4 class="float-left mt-4 ml-2">Apply for Leave
+                </h4>
+            </div>
+
+            <div class="card-body">
+                <!-- if there are creation errors, they will show here -->
+                {!! HTML::ul($errors->all()) !!}
+
+                @if($employee == null)
+                {!! Form::open(array('route' => 'storeLeave', 'method'=>'POST','files'=>true)) !!}
+                @else
+                {!! Form::model($employee, array('route' => array('storeLeave', $employee->id), 'files'=>true, 'method'
+                => 'POST')) !!}
+                @endif
+
+                {!! Form::hidden('employee_id', Request::old('employee_id'), array('class' => 'form-control',
+                'required', 'id'=>'employee_id')) !!}
+
+                <div class="col-sm-6">
+>>>>>>> local
                     @if($employee == null)
                         {!! Form::open(array('route' => 'storeLeave', 'method'=>'POST','files'=>true)) !!}
                     @else
@@ -46,6 +72,7 @@
                             </div>
                         @endif
 
+<<<<<<< master
                         <div class="form-group">
                             {!! Form::Label('leaveType_id', 'Leave Type') !!}
                             <select class="form-control" name="leaveType_id">
@@ -66,6 +93,19 @@
                                 <input type="date" name="start_date" value="{{ old('start_date') }}" required id="start_date" class="form-control">
                             </div>
                         </div>
+=======
+                    <div class="form-group">
+                        {!! Form::label('start_date', 'Start Date') !!}
+                        <input type="date" name="start_date" value="{{ old('start_date') }}" required id="start_date"
+                            class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('end_date', 'End Date') !!}
+                        <input type="date" name="end_date" value="{{ old('end_date') }}" required id="end_date"
+                            class="form-control">
+                    </div>
+>>>>>>> local
 
                         <div class="col-sm-6 col-md-6">
                             <div class="form-group">
@@ -74,6 +114,7 @@
                             </div>
                         </div>
 
+<<<<<<< master
                     </div>
 
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -81,6 +122,11 @@
                         {!! Form::submit('Add', array('class' => 'btn btn-primary')) !!}
                     </div>
                     {!! Form::close() !!}
+=======
+                <div class="col-xs-12 col-sm-12 col-md-12 pt-4">
+                    <a href="{!!URL::route('leaves')!!}" class="btn btn-sm btn-info" role="button">Cancel</a>
+                    {!! Form::submit('Add', array('class' => 'btn btn-sm btn-primary')) !!}
+>>>>>>> local
                 </div>
             </div>
         </div>
